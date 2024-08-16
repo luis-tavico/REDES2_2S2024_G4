@@ -29,7 +29,7 @@ Tabla de VLANs pertenecientes a cada departamento.
 | Escenario  | Protocolo Spanning-Tree | Red Primaria | Red Básicos | Red Diversificado |
 |------------|-------------------------|--------------|-------------|-------------------|
 | 1          | PVST                    |     47.56    |   35.49     |       35.36       |
-| 2          | Rapid PVST              |       8      |    7.64     |         0         |
+| 2          | Rapid PVST              |     7.89     |    7.64     |         0         |
 
 Según los tiempos de convergencia, la mejor opción  es Rapid PVST, el tiempo dependerá de que enlace caiga, pero es notable que independientemente de eso los tiempo de RPVST son mucho menores a PVST.
 
