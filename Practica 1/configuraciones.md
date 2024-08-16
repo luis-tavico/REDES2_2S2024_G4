@@ -23,11 +23,11 @@ write
 
 configure terminal
 vlan 14
-name PRIMARIA
+name Primaria14
 vlan 24
-name BASICOS
+name Basicos24
 vlan 34
-name DIVERSIFICADO
+name Diversificado34
 end
 write
 
