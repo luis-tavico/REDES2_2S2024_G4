@@ -24,7 +24,7 @@ Tabla de VLANs pertenecientes a cada departamento.
 | Basicos       | Basicos24       | 24 |
 | Diversificado | Diversificado34 | 34 |
 
-### Tiempos de convergencia
+### Tiempos de convergencia [En segundos]
 
 | Escenario  | Protocolo Spanning-Tree | Red Primaria | Red Básicos | Red Diversificado |
 |------------|-------------------------|--------------|-------------|-------------------|
