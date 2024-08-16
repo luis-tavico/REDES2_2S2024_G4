@@ -13,10 +13,10 @@ AUX: EDUARDO IXÉN
 
 | Nombre                                | Carnet    |
 |:------------------------------------- |:---------:|
-| Luis Fernando Falla Guzmán            | 201700700 |
-| Cristofher Antonio Saquilmer Rodas    | 201700686 |
-| Pedro Luis Pu Tavico                  | 202000562 |
-| Camilo Ernesto Sincal Sipac           | 202000605 |
+| [Luis Fernando Falla Guzmán](https://github.com/fernandofalla)          | 201700700 |
+| [Cristofher Antonio Saquilmer Rodas](https://github.com/CristofherS)    | 201700686 |
+| [Pedro Luis Pu Tavico](https://github.com/luis-tavico)                  | 202000562 |
+| [Camilo Ernesto Sincal Sipac](https://github.com/CamiloSincal)          | 202000605 |
 
 ## Introducción
 Este manual presenta los resultados obtenidos de la practica 1 del curso redes de computadoras 2, la cual se enfoca en la configuracion de una red LAN de un colegio utilizando la plataforma Packet Tracer.
@@ -52,17 +52,31 @@ Switch Servidor = SW0_G4
 ## Convergencia PVST vrs RPVST
 
 | Escenario  | Protocolo Spanning-Tree | Red Primaria | Red Básicos | Red Diversificado |
-|:----------:|:-----------------------:|:------------:|:------:|:-----------------:|
-| 1          | PVST                    |       45     |     40      |        43         |
-| 2          | RPVST              |       6      |      6      |         7         |
+|:----------:|:-----------------------:|:------------:|:-----------:|:-----------------:|
+| 1          | PVST                    |    47.56 s   |  35.49 s    |     35.36 s       |
+| 2          | RPVST                   |     7.89 s   |   7.64 s    |         0 s       |
 
 Según los tiempos de convergencia, la mejor opción  es Rapid PVST, el tiempo dependerá de que enlace caiga, pero es notable que independientemente de eso los tiempo de RPVST son mucho menores a PVST.
 
 ### PVST
-![convergencia pvst](./imgs/pvst.png)
+- Primaria
+![convergencia pvst primaria](./imgs/p_primaria.jpeg)
+
+- Básicos
+![convergencia pvst básicos](./imgs/p_basicos.jpeg)
+
+- Diversificado
+![convergencia pvst diversificado](./imgs/p_diversificado.jpeg)
 
 ### RPVST
-![convergencia rpvst](./imgs/rpvst.png)
+- Primaria
+![convergencia rpvst primaria](./imgs/r_primaria.jpeg)
+
+- Básicos
+![convergencia rpvst básicos](./imgs/r_basicos.jpeg)
+
+- Diversificado
+![convergencia rpvst diversificado](./imgs/r_diversificado.jpeg)
 
 ## Configuración de switches
 
