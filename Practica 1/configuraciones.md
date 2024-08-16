@@ -32,7 +32,7 @@ Este manual presenta los resultados obtenidos de la practica 1 del curso redes d
 - Aplicar las medidas de seguridad en los puertos de un switch.
 
 ## Topología
-![topología de red](./imgs/topologia.PNG)
+![topología de red](./imgs/topologia.png)
 
 ## VTP
 ```
