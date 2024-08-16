@@ -24,6 +24,15 @@ Tabla de VLANs pertenecientes a cada departamento.
 | Basicos       | Basicos24       | 24 |
 | Diversificado | Diversificado34 | 34 |
 
+### Tiempos de convergencia
+
+| Escenario  | Protocolo Spanning-Tree | Red Primaria | Red Básicos | Red Diversificado |
+|------------|-------------------------|--------------|-------------|-------------------|
+| 1          | PVST                    |       45     |     40      |        43         |
+| 2          | Rapid PVST              |       6      |      6      |         7         |
+
+Según los tiempos de convergencia, la mejor opción  es Rapid PVST, el tiempo dependerá de que enlace caiga, pero es notable que independientemente de eso los tiempo de RPVST son mucho menores a PVST.
+
 ## Construido con
 
 Para la creacion de la practica se utilizaron los siguientes programas de simulacion de redes:
