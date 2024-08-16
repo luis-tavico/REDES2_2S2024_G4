@@ -1,6 +1,72 @@
-# Configuraciones switches
+# Practica 1 - Manual Técnico
+---
+UNIVERSIDAD DE SAN CARLOS DE GUATEMALA
+FACULTAD DE INGENIERÍA
+ESCUELA DE CIENCIAS Y SISTEMAS
+REDES DE COMPUTADORAS 2
+ING. ALLAN ALBERTO MORATAYA GÓMEZ
+AUX: EDUARDO IXÉN
 
-# SW0_G4 (servidor vtp y raiz stp)
+---
+
+## Integrantes
+
+| Nombre                                | Carnet    |
+|:------------------------------------- |:---------:|
+| Luis Fernando Falla Guzmán            | 201700700 |
+| Cristofher Antonio Saquilmer Rodas    | 201700686 |
+| Pedro Luis Pu Tavico                  | 202000562 |
+| Camilo Ernesto Sincal Sipac           | 202000605 |
+
+## Introducción
+Este manual presenta los resultados obtenidos de la practica 1 del curso redes de computadoras 2, la cual se enfoca en la configuracion de una red LAN de un colegio utilizando la plataforma Packet Tracer.
+
+## Objetivos
+- Familiarizarse con el simulador Cisco Packet Tracer.
+- Realizar las configuraciones básicas del switch.
+- Configurar y conocer el funcionamiento de las VLAN.
+- Configurar y conocer los tipos de acceso en los puertos.
+- Configurar y conocer el protocolo VTP con sus distintos modos.
+- Configurar y conocer la comunicación entre distintas VLAN.
+- Comprender el funcionamiento de STP, sus distintas versiones y los estados de las interfaces.
+- Aplicar las medidas de seguridad en los puertos de un switch.
+
+## Topología
+![topología de red](./imgs/topologia.PNG)
+
+## VTP
+```
+Dominio = g4
+Contraseña = redes2grupo4
+Switch Servidor = SW0_G4
+```
+
+## VLAN's y Direcciones de Red
+
+| Departamento  | VLAN  | IP                |
+|:------------- |:-----:| :---------------: |
+| Primaria      | 14    | 192.168.14.0/24   |
+| Básicos       | 24    | 192.168.24.0/24   |
+| Diversificado | 34    | 192.168.34.0/24   |
+
+## Convergencia PVST vrs RPVST
+
+| Escenario  | Protocolo Spanning-Tree | Red Primaria | Red Básicos | Red Diversificado |
+|:----------:|:-----------------------:|:------------:|:------:|:-----------------:|
+| 1          | PVST                    |       45     |     40      |        43         |
+| 2          | RPVST              |       6      |      6      |         7         |
+
+Según los tiempos de convergencia, la mejor opción  es Rapid PVST, el tiempo dependerá de que enlace caiga, pero es notable que independientemente de eso los tiempo de RPVST son mucho menores a PVST.
+
+### PVST
+![convergencia pvst](./imgs/pvst.png)
+
+### RPVST
+![convergencia rpvst](./imgs/rpvst.png)
+
+## Configuración de switches
+
+### SW0_G4 (servidor vtp y raiz stp)
 
 ```
 enable
@@ -55,7 +121,7 @@ write
 ```
 
 
-# SW11_G4 
+### SW11_G4 
 
 ```
 enable
@@ -95,7 +161,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW1_G4
+### SW1_G4
 
 ```
 enable
@@ -135,7 +201,7 @@ write
 ```
 
 
-# SW2_G4
+### SW2_G4
 
 ```
 enable
@@ -174,7 +240,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW3_G4
+### SW3_G4
 
 ```
 enable
@@ -213,7 +279,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW4_G4
+### SW4_G4
 
 ```
 enable
@@ -252,7 +318,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW5_G4
+### SW5_G4
 
 ```
 enable
@@ -291,7 +357,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW6_G4
+### SW6_G4
 
 ```
 enable
@@ -343,7 +409,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW7_G4
+### SW7_G4
 
 ```
 enable
@@ -396,7 +462,7 @@ write
 ```
 
 
-# SW8_G4
+### SW8_G4
 
 ```
 enable
@@ -448,7 +514,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW9_G4
+### SW9_G4
 
 ```
 enable
@@ -500,7 +566,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW10_G4
+### SW10_G4
 
 ```
 enable
@@ -552,7 +618,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW12_G4
+### SW12_G4
 
 ```
 enable
@@ -591,7 +657,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW13_G4
+### SW13_G4
 
 ```
 enable
@@ -630,7 +696,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW14_G4
+### SW14_G4
 
 ```
 enable
@@ -669,7 +735,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW15_G4
+### SW15_G4
 
 ```
 enable
@@ -708,7 +774,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW16_G4
+### SW16_G4
 
 ```
 enable
@@ -747,7 +813,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW17_G4
+### SW17_G4
 
 ```
 enable
@@ -798,7 +864,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW18_G4
+### SW18_G4
 
 ```
 enable
@@ -850,7 +916,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW19_G4
+### SW19_G4
 
 ```
 enable
@@ -902,7 +968,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW20_G4
+### SW20_G4
 
 ```
 enable
@@ -954,7 +1020,7 @@ write
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
 
-# SW21_G4
+### SW21_G4
 
 ```
 enable
