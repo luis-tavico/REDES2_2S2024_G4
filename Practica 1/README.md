@@ -1095,6 +1095,18 @@ Según los tiempos de convergencia, la mejor opción  es Rapid PVST, el tiempo d
 - Diversificado
 ![convergencia rpvst diversificado](./imgs/r_diversificado.jpeg)
 
+## Protocolo usado (RSTP)
+
+En esta práctica, donde simulo una red LAN de un colegio con múltiples switches y enlaces redundantes, RSTP es la elección más adecuada. La rápida convergencia de RSTP garantiza que si se produce un corte en un enlace, los dispositivos se reconecten rápidamente a través de una ruta alternativa, minimizando el impacto en los usuarios y servicios de la red.
+
+### Principales razones:
+
+- Velocidad de convergencia: RSTP utiliza mensajes más específicos y estados de puerto adicionales para calcular el árbol de expansión de manera más eficiente. Esto significa que la red se recupera más rápidamente de fallos o cambios en la configuración, lo que es crucial en entornos donde la continuidad del servicio es prioritaria.
+
+- Tolerancia a fallos: RSTP es más tolerante a fallos debido a su rápida convergencia. Si un enlace o dispositivo falla, la red se reconvergerá rápidamente, minimizando el tiempo de inactividad.
+
+- Escalabilidad: RSTP es ideal para redes de tamaño medio y grande, ya que su rápida convergencia evita problemas de escalabilidad que podrían surgir en redes más grandes con STP.
+
 ## Ping entre hosts
 
 ### Primaria
