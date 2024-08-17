@@ -44,39 +44,22 @@ Switch Servidor = SW0_G4
 ## VLAN's y Direcciones de Red
 
 | Departamento  | VLAN  | IP                |
-|:------------- |:-----:| :---------------: |
+|---------------|-------|-------------------|
 | Primaria      | 14    | 192.168.14.0/24   |
 | Básicos       | 24    | 192.168.24.0/24   |
 | Diversificado | 34    | 192.168.34.0/24   |
 
-## Convergencia PVST vrs RPVST
+## Switch raiz
 
-| Escenario  | Protocolo Spanning-Tree | Red Primaria | Red Básicos | Red Diversificado |
-|:----------:|:-----------------------:|:------------:|:-----------:|:-----------------:|
-| 1          | PVST                    |    47.56 s   |  35.49 s    |     35.36 s       |
-| 2          | RPVST                   |     7.89 s   |   7.64 s    |         0 s       |
+Para verificar que el switch es el switch raiz se utiliza el siguiente comnado:
 
-Según los tiempos de convergencia, la mejor opción  es Rapid PVST, el tiempo dependerá de que enlace caiga, pero es notable que independientemente de eso los tiempo de RPVST son mucho menores a PVST.
+```
+show spanning-tree
+```
 
-### PVST
-- Primaria
-![convergencia pvst primaria](./imgs/p_primaria.jpeg)
+Y debe aparecer el mensaje ```This bridge is the root``` como aparece en la siguiente imagen:
 
-- Básicos
-![convergencia pvst básicos](./imgs/p_basicos.jpeg)
-
-- Diversificado
-![convergencia pvst diversificado](./imgs/p_diversificado.jpeg)
-
-### RPVST
-- Primaria
-![convergencia rpvst primaria](./imgs/r_primaria.jpeg)
-
-- Básicos
-![convergencia rpvst básicos](./imgs/r_basicos.jpeg)
-
-- Diversificado
-![convergencia rpvst diversificado](./imgs/r_diversificado.jpeg)
+![switch raiz](./imgs/sw_raiz.png)
 
 ## Configuración de switches
 
@@ -133,7 +116,6 @@ write
 
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
-
 
 ### SW11_G4 
 
@@ -213,7 +195,6 @@ write
 
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
-
 
 ### SW2_G4
 
@@ -474,7 +455,6 @@ write
 
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
-
 
 ### SW8_G4
 
@@ -1085,3 +1065,48 @@ write
 
 ! Revisar STP: show spanning-tree ó show spanning-tree summary
 ```
+
+## Convergencia PVST vrs RPVST
+
+| Escenario  | Protocolo Spanning-Tree | Red Primaria | Red Básicos | Red Diversificado |
+|------------|-------------------------|--------------|-------------|-------------------|
+| 1          | PVST                    |    47.56 s   |  35.49 s    |     35.36 s       |
+| 2          | RPVST                   |     7.89 s   |   7.64 s    |         0 s       |
+
+Según los tiempos de convergencia, la mejor opción  es Rapid PVST, el tiempo dependerá de que enlace caiga, pero es notable que independientemente de eso los tiempo de RPVST son mucho menores a PVST.
+
+### PVST
+- Primaria
+![convergencia pvst primaria](./imgs/p_primaria.jpeg)
+
+- Básicos
+![convergencia pvst básicos](./imgs/p_basicos.jpeg)
+
+- Diversificado
+![convergencia pvst diversificado](./imgs/p_diversificado.jpeg)
+
+### RPVST
+- Primaria
+![convergencia rpvst primaria](./imgs/r_primaria.jpeg)
+
+- Básicos
+![convergencia rpvst básicos](./imgs/r_basicos.jpeg)
+
+- Diversificado
+![convergencia rpvst diversificado](./imgs/r_diversificado.jpeg)
+
+## Ping entre hosts
+
+### Primaria
+
+![ping primaria](./imgs/ping_primaria.png)
+
+La imagen anterior representa el ping realizado de la VPC 192.168.14.1 (Primaria14) a la VPC 192.168.14.3 (Primaria14).
+
+![ping basicos](./imgs/ping_basicos.png)
+
+La imagen anterior representa el ping realizado de la VPC 192.168.24.1 (Basicos24) a la VPC 192.168.24.2 (Basicos24).
+
+![ping diversificado](./imgs/ping_diversificado.png)
+
+La imagen anterior representa el ping realizado de la VPC 192.168.34.1 (Diversificado34) a la VPC 192.168.34.3 (Diversificado34).
