@@ -540,94 +540,97 @@ wr
 #### Multilayer Switch0
 
 ```
-VLAN 34
-Enable
-Configure Terminal
-Access-List 101 permit icmp 192.168.74.0 0.0.0.255 192.168.14.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.54.0 0.0.0.255 192.168.14.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.44.0 0.0.0.255 192.168.14.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.34.0 0.0.0.255 192.168.14.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.44.0 0.0.0.255 192.168.24.0 0.0.0.255 echo
-Access-List 101 deny icmp any 192.168.24.0 0.0.0.255 echo
-Access-List 101 deny icmp any 192.168.14.0 0.0.0.255 echo
-Interface range FastEthernet 0/10-13
-Ip Access-group 101 in
-VLAN 24
-Enable
-Configure terminal
-Access-List 100 deny icmp 192.168.24.0 0.0.0.255 any echo
-access-list 100 permit ip any any
-Interface FastEthernet 0/1
-Ip Access-group 100 out
+enable
+configure terminal
+access-list 100 deny icmp 192.168.24.0 0.0.0.255 any echo
+access-list permit ip any any
+interface port-channel 1
+ip access-group 100 out
+exit
+access-list 101 deny icmp 192.168.24.0 0.0.0.255 192.168.14.0 0.0.0.255 echo
+access-list permit ip any any
+interface vlan 24
+ip access-group 101 in
+exit
+access-list 102 deny icmp 192.168.14.0 0.0.0.255 192.168.24.0 0.0.0.255 echo
+access-list 102 deny icmp 192.168.14.0 0.0.0.255 192.168.84.0 0.0.0.255 echo
+access-list 102 deny icmp 192.168.14.0 0.0.0.255 192.168.64.0 0.0.0.255 echo
+access-list permit ip any any
+interface vlan 34
+ip access-group 102 in
 ```
 
 #### Multilayer Switch1
 
 ```
-VLAN 14
-Enable
-Configure terminal
-Access-List 100 permit icmp 192.168.44.0 0.0.0.255 any echo
-access-list 100 permit ip any any
-Interface FastEthernet 0/1
-Ip Access-group 100 out
-VLAN 34
-Enable
-Configure terminal
-Access-List 101 deny icmp any 192.168.44.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.14.0 0.0.0.255 192.168.34.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.74.0 0.0.0.255 192.168.34.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.54.0 0.0.0.255 192.168.34.0 0.0.0.255 echo
-Interface range FastEthernet 0/10-21
-Ip Access-group 101 in
+enable
+configure terminal
+access-list 101 deny icpm any 192.168.44.0 0.0.0.255 any echo
+access-list permit ip any any
+exit
+interface port-channel 1
+ip acces-group 101 in
+exit
+interface port-channel 2
+ip acces-group 101 in
+exit
+interface port-channel 3
+ip acces-group 101 in
+exit
+access-list 102 deny icpm 192.168.34.0 0.0.0.255 192.168.44.0 0.0.0.255 echo
+access-list 102 deny icpm 192.168.34.0 0.0.0.255 192.168.24.0 0.0.0.255 echo
+access-list 102 deny icpm 192.168.34.0 0.0.0.255 192.168.84.0 0.0.0.255 echo
+access-list 102 deny icpm 192.168.34.0 0.0.0.255 192.168.64.0 0.0.0.255 echo
+access-list permit ip any any
+interface vlan 34
+ip access-group 102 in
 ```
 
 #### Multilayer Switch2
 
 ```
-VLAN 34
-Enable
-Configure terminal
-Access-List 101 permit icmp 192.168.14.0 0.0.0.255 192.168.54.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.74.0 0.0.0.255 192.168.54.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.44.0 0.0.0.255 192.168.54.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.34.0 0.0.0.255 192.168.54.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.44.0 0.0.0.255 192.168.64.0 0.0.0.255 echo
-Access-List 101 deny icmp any 192.168.64.0 0.0.0.255 echo
-Access-List 101 deny icmp any 192.168.74.0 0.0.0.255 echo
-Interface range FastEthernet 0/10-13
-Ip Access-group 101 in
-VLAN 24
-Enable
-Configure terminal
-Access-List 100 deny icmp 192.168.64.0 0.0.0.255 any echo
-access-list 100 permit ip any any
-Interface FastEthernet 0/1
-Ip Access-group 100 out
+enable
+configure terminal
+access-list 100 deny icmp 192.168.64.0 0.0.0.255 any echo
+access-list permit ip any any
+interface port-channel 2
+ip access-group 100 out
+exit
+access-list 101 deny icmp 192.168.64.0 0.0.0.255 192.168.54.0 0.0.0.255 echo
+access-list 102 permit ip any any
+interface vlan 24
+ip access-group 101 in
+exit
+access-list 102 deny icmp 192.168.54.0 0.0.0.255 192.168.64.0 0.0.0.255 echo
+access-list 102 deny icmp 192.168.54.0 0.0.0.255 192.168.84.0 0.0.0.255 echo
+access-list 102 deny icmp 192.168.54.0 0.0.0.255 192.168.24.0 0.0.0.255 echo
+access-list 102 permit ip any any
+interface vlan 34
+ip access-group 102 in
 ```
 
 #### Multilayer Switch3
 
 ```
-VLAN 34
-Enable
-Configure terminal
-Access-List 101 permit icmp 192.168.14.0 0.0.0.255 192.168.74.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.54.0 0.0.0.255 192.168.74.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.44.0 0.0.0.255 192.168.74.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.34.0 0.0.0.255 192.168.74.0 0.0.0.255 echo
-Access-List 101 permit icmp 192.168.44.0 0.0.0.255 192.168.84.0 0.0.0.255 echo
-Access-List 101 deny icmp any 192.168.84.0 0.0.0.255 echo
-Access-List 101 deny icmp any 192.168.74.0 0.0.0.255 echo
-Interface range FastEthernet 0/10-13
-Ip Access-group 101 in
-VLAN 24
-Enable
-Configure terminal
-Access-List 100 deny icmp 192.168.84.0 0.0.0.255 any echo
-access-list 100 permit ip any any
-Interface FastEthernet 0/1
-Ip Access-group 100 out
+enable
+configure terminal
+access-list 100 deny icmp 192.168.84.0 0.0.0.255 any echo
+access-list permit ip any any
+exit
+interface port-channel 3
+ip access-group 100 out
+exit
+access-list 101 deny icmp 192.168.84.0 0.0.0.255 192.168.74.0 0.0.0.255 echo
+access-list 102 permit ip any any
+interface vlan 24
+ip access-group 101 in
+exit
+access-list 102 deny icmp 192.168.74.0 0.0.0.255 192.168.24.0 0.0.0.255 echo
+access-list 102 deny icmp 192.168.74.0 0.0.0.255 192.168.84.0 0.0.0.255 echo
+access-list 102 deny icmp 192.168.74.0 0.0.0.255 192.168.64.0 0.0.0.255 echo
+access-list 102 permit ip any any
+interface vlan 34
+ip access-group 102 in >
 ```
 
 ### EIGRP
