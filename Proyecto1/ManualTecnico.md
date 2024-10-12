@@ -916,7 +916,7 @@ switchport mode trunk
 exit
 interface range fastEthernet 0/1-2
 switchport mode access
-switchport acces vlan 30
+switchport acces vlan 40
 Switch3
 enable
 configure terminal
@@ -925,7 +925,7 @@ switchport mode trunk
 exit
 interface range fastEthernet 0/1-2
 switchport mode access
-switchport acces vlan 40
+switchport acces vlan 30
 ```
 
 ## Configuración HSRP
