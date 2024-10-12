@@ -1,0 +1,14 @@
+EJECUTAR PARA LOS SWITCHES MULTICAPA 0,1,2,11,3,7,4,5,8,9:
+
+interface vlan 10
+ip ospf 1 area 4
+exit
+interface vlan 20
+ip ospf 1 area 4
+exit
+interface vlan 30
+ip ospf 1 area 4
+exit
+interface vlan 40
+ip ospf 1 area 4
+exit
