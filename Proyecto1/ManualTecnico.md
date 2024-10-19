@@ -916,7 +916,7 @@ switchport mode trunk
 exit
 interface range fastEthernet 0/1-2
 switchport mode access
-switchport acces vlan 30
+switchport acces vlan 40
 Switch3
 enable
 configure terminal
@@ -925,7 +925,7 @@ switchport mode trunk
 exit
 interface range fastEthernet 0/1-2
 switchport mode access
-switchport acces vlan 40
+switchport acces vlan 30
 ```
 
 ## Configuración HSRP
@@ -993,4 +993,46 @@ interface vlan 40
 ip helper-address 10.0.0.6
 end
 wr
+```
+
+## Configuración De Access Lists
+
+### Multilayer Switch4 y Multilayer Switch5
+```
+enable
+configure terminal
+access-list 100 deny icmp 192.168.4.0 0.0.0.63 192.168.4.64 0.0.0.63 echo
+access-list 100 deny icmp 192.168.4.0 0.0.0.63 192.168.4.192 0.0.0.63 echo
+access-list 100 permit ip any any
+interface vlan 10
+ip access-group 100 in
+exit
+access-list 101 deny icmp 192.168.4.64 0.0.0.63 192.168.4.0 0.0.0.63 echo
+access-list 101 deny icmp 192.168.4.64 0.0.0.63 192.168.4.128 0.0.0.63 echo
+access-list 101 permit ip any any
+interface vlan 20
+ip access-group 101 in
+end
+wr
+
+```
+
+### Multilayer Switch8 y Multilayer Switch9
+```
+enable
+configure terminal
+access-list 100 deny icmp 192.168.4.128 0.0.0.63 192.168.4.64 0.0.0.63 echo
+access-list 100 deny icmp 192.168.4.128 0.0.0.63 192.168.4.192 0.0.0.63 echo
+access-list 100 permit ip any any
+interface vlan 30
+ip access-group 100 in
+exit
+access-list 101 deny icmp 192.168.4.192 0.0.0.63 192.168.4.0 0.0.0.63 echo
+access-list 101 deny icmp 192.168.4.192 0.0.0.63 192.168.4.128 0.0.0.63 echo
+access-list 101 permit ip any any
+interface vlan 40
+ip access-group 101 in
+end
+wr
+
 ```
